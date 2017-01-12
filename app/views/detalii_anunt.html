@@ -1,0 +1,23 @@
+<div class="container">
+
+    <div>
+        <h2 style="font-family: Copperplate, 'Copperplate Gothic Light', fantasy;">{{anunt.nume}} </h2>
+        <h6 style="font-family: Copperplate, 'Copperplate Gothic Light', fantasy;">DE LA <a ui-sref = "detalii_firma({id: anunt.firma.id})">{{anunt.firma.denumire}}</a>  </h6>
+    </div>
+    <div class="panel-group">
+        <div class="panel panel-default">
+            <div class="panel-heading">Domeniu:</div>
+            <div class="panel-body">{{anunt.domeniu}}</div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">Tip Oferta:</div>
+            <div class="panel-body">{{anunt.tip_oferta}}</div>
+        </div>
+    </div>
+    <div class=" panel-group">
+        <div class="panel panel-default">
+            <div class="panel-heading">Descriere</div>
+            <div class="panel-body">{{anunt.descriere}}</div>
+        </div>
+    </div>
+</div>

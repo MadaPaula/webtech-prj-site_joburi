@@ -1,0 +1,25 @@
+<div class="container">
+    <div class="center-block">
+        <center>
+            <h2>Anunturi</h2>
+        </center>
+    </div>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Nr.</th>
+                <th>Titlu</th>
+                <th>Domeniu</th>
+                <th>Tip Oferta</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="anunt in anunturi" ng-click = "mergiLaAnunt(anunt)">
+                <td>{{$index}}</td>
+                <td>{{anunt.nume}}</td>
+                <td>{{anunt.domeniu}}</td>
+                <td>{{anunt.tip_oferta}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

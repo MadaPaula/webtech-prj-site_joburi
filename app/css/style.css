@@ -1,0 +1,19 @@
+#adaugaFirma {
+    border: 1px solid lightgrey;
+    border-radius: 5px;
+    padding-bottom: 5px;
+    margin-left: 60px;
+    margin-top: 60px;
+}
+
+body {
+    padding-left: 25px;
+}
+
+nav {
+    margin-left: -25px;
+}
+
+table {
+    border: 1px solid lightgrey;
+}

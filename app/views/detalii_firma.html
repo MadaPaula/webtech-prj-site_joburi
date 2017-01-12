@@ -1,0 +1,131 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <h2 style="font-family: Copperplate, 'Copperplate Gothic Light', fantasy;">{{firma.denumire}} </h2>
+        </div>
+
+
+    </div>
+    <div class="container" ng-include="preiaTemplate()">
+
+    </div>
+    <br><br><br>
+</div>
+
+<script type="text/ng-template" id="afisare">
+    <div class="row">
+        <div class="col-md-2 pull-right">
+            <br>
+            <button class="btn btn-success form-control" ng-click="editeazaDate()">Editeaza</button>
+
+        </div>
+        <div class="col-md-3 panel-group">
+            <div class="panel panel-default">
+                <div class="panel-heading">Adresa:</div>
+                <div class="panel-body">{{firma.adresa}}</div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">Numar telefon:</div>
+                <div class="panel-body">{{firma.nr_telefon}}</div>
+            </div>
+        </div>
+        <div class="col-md-4 panel-group">
+            <div class="panel panel-default">
+                <div class="panel-heading">Descriere</div>
+                <div class="panel-body">{{firma.descriere}}</div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+
+        <div class="col-md-8">
+            <div>
+                <h3>Anunturi:</h3>
+            </div>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Nr.</th>
+                        <th>Titlu</th>
+                        <th>Domeniu</th>
+                        <th>Tip Oferta</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="anunt in firma.anunts">
+                        <td ng-click="mergiLaAnunt(anunt)">{{$index + 1}}</td>
+                        <td ng-click="mergiLaAnunt(anunt)">{{anunt.nume}}</td>
+                        <td ng-click="mergiLaAnunt(anunt)">{{anunt.domeniu}}</td>
+                        <td ng-click="mergiLaAnunt(anunt)">{{anunt.tip_oferta}}</td>
+                        <td>
+                            <button type="button" class="btn btn-danger" ng-click='stergeAnunt(anunt)'>
+                                <span class="glyphicon glyphicon-remove"></span>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div id="adaugaAnunt" class="col-md-3">
+            <h3>Adauga un anunt</h3>
+            <form>
+                <input type="text" class="form-control" placeholder="titlu" ng-model="anunt.nume" />
+                <br>
+                <select class="form-control" ng-model="anunt.domeniu">
+                    <option value="" disabled selected>Alegeti Domeniul</option>
+                    <option ng-repeat = "domeniu in domenii">{{domeniu}}</option>
+                 </select>
+                <br>
+                <select class="form-control" ng-model="anunt.oras">
+                    <option value="" disabled selected>Alegeti Orasul</option>
+                     <option ng-repeat = "oras in orase">{{oras}}</option></select>
+                <br>
+                <select class="form-control" ng-model="anunt.tip_oferta">
+                    <option value="" disabled selected>Alegeti Tipul Ofertei</option>
+                     <option ng-repeat = "tip in tipuri_job">{{tip}}</option></select>
+                <br>
+                <textarea class="form-control" rows="7" placeholder="descriere" ng-model="anunt.descriere"></textarea>
+                <br>
+
+                <input type="submit" value="Adauga" class="btn btn-success form-control" ng-click="adaugaAnunt(anunt, firma)" />
+            </form>
+        </div>
+    </div>
+
+</script>
+
+<script type="text/ng-template" id="editare">
+    <div class="col-md-2 pull-right">
+        <br>
+        <button class="btn btn-success form-control" ng-click="salveazaDate(firma)">Salveaza modificari</button><br>
+        <button class="btn btn-danger form-control" ng-click="anuleazaEditare()">Anuleaza</button>
+    </div>
+    <div class="row">
+        <div class="col-md-3 panel-group">
+            <div class="panel panel-default">
+                <div class="panel-heading">Adresa:</div>
+                <div class="panel-body">
+                    <input type="text" name="adresa" class="form-control" ng-model="firma.adresa">
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">Numar telefon:</div>
+                <div class="panel-body">
+                    <input type="text" name="nr_telefon" class="form-control" maxlength="10" placeholder="ex:0754234123" ng-model="firma.nr_telefon" />
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 panel-group">
+            <div class="panel panel-default">
+                <div class="panel-heading">Descriere</div>
+                <div class="panel-body">
+                    <textarea name="descriere" rows="7" class="form-control" ng-model="firma.descriere" />
+                </div>
+            </div>
+        </div>
+    </div>
+</script>

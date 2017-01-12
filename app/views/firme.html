@@ -1,0 +1,46 @@
+<div class="row">
+    <div class="col-md-7">
+        <h2>Lista Firme</h2>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Nr.</th>
+                    <th>Denumire</th>
+                    <th>Numar Anunturi</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="firma in firme">
+                    <td ng-click="mergiLaDetalii(firma)">{{$index + 1}}</td>
+                    <td ng-click="mergiLaDetalii(firma)">{{firma.denumire}}</td>
+                    <td ng-click="mergiLaDetalii(firma)">{{firma.anunts.length}}</td>
+                    <td>
+                        <button type="button" class="btn btn-danger" ng-click='stergeFirma(firma)'>
+                    <span class="glyphicon glyphicon-remove"></span>
+                </button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="adaugaFirma" class="col-md-3">
+        <h3>Adauga o firma</h3>
+        <form name="adaugaFirmaForm" novalidate>
+            <input type="text" class="form-control" placeholder="denumire" ng-model="firma.denumire" />
+            <br>
+            <input type="text" class="form-control" placeholder="adresa" ng-model="firma.adresa" />
+            <br>
+            <input type="text" class="form-control " name="numarTelefon" required min="10" maxlength=10 verificare-telefon placeholder="ex:0754234123" ng-model="firma.nr_telefon" />
+            <div ng-messages="adaugaFirmaForm.numarTelefon.$error" style="color:tomato">
+                <div ng-message="required">Introduceti numarul de telefon!</div>
+                <div ng-message="min">Numarul de telefon trebuie sa aibe 10 caractere!</div>
+                <div ng-message="telefon">Numar invalid!</div>
+            </div>
+            <br>
+            <textarea class="form-control" rows="7" placeholder="descriere" ng-model="firma.descriere"></textarea>
+            <br>
+
+            <input type="submit" value="Adauga" class="btn btn-success form-control" ng-click="adaugaFirma(firma)" />
+        </form>
+    </div>
+</div>
