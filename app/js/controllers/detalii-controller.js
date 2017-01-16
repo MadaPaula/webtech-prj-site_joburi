@@ -12,6 +12,7 @@ detaliiController.controller('detaliiController', ['$scope', '$http', '$state', 
                 console.log(error);
             })
     }
+    
     $scope.template = "afisare";
 
     $scope.domenii = ["Administrativ/Logistica", "Agricultura", "Alimentatie/HoReCa", "Altele", "Arhitectura/Design Interior",

@@ -49,7 +49,9 @@ var Anunt = sequelize.define("anunt", {
 })
 
 Firma.hasMany(Anunt, {
-  foreignKey: "id_firma"
+  foreignKey: "id_firma",
+  onDelete: "CASCADE"
+
 });
 Anunt.belongsTo(Firma, {
   foreignKey: "id_firma"
@@ -99,7 +101,7 @@ app.get("/firme/:id", (req, res) => {
     .then(function(firma) {
       res.status(200).send(firma);
     })
-    .catch(function(error){
+    .catch(function(error) {
       console.log(error);
     })
 })
@@ -154,7 +156,7 @@ app.delete("/firme/:id", function(req, res) {
 
 app.get("/anunturi", function(req, res) {
   Anunt.findAll({
-      attributes: ["id", "nume", "descriere", "domeniu", "tip_oferta","oras"],
+      attributes: ["id", "nume", "descriere", "domeniu", "tip_oferta", "oras"],
       include: [Firma]
     })
     .then(function(anunturi) {
@@ -168,11 +170,11 @@ app.get("/anunturi", function(req, res) {
 
 app.get("/anunturi/:id", function(req, res) {
   Anunt.find({
-      attributes: ["id", "nume", "descriere", "domeniu", "tip_oferta","oras"],
+      attributes: ["id", "nume", "descriere", "domeniu", "tip_oferta", "oras"],
       where: {
         id: req.params.id
       },
-      include:[Firma]
+      include: [Firma]
     })
     .then(function(anunt) {
       res.status(200).send(anunt);
@@ -230,4 +232,4 @@ app.delete("/anunturi/:id", function(req, res) {
     })
 })
 
-app.listen(process.env.PORT);
+app.listen(8080);
